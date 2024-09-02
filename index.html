@@ -1,1 +1,433 @@
-<hl>Welcome</hl>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training-free Long Video Generation with Chain of Diffusion Model Experts</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .artistic-title {
+            font-family: 'Georgia', serif;
+            font-size: 2.5em;
+            color: #333;
+            text-shadow: 1px 1px #ddd;
+            margin: 0;
+        }
+
+        .github-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #24292e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1em;
+            margin-top: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: 300;
+        }
+
+        .github-button img {
+            width: 20px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        section {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #000;
+            border-bottom: none;
+            padding-bottom: 10px;
+            text-align: center;
+            font-size: 1.75em;
+        }
+
+        .abstract {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: justify;
+            font-size: 1.2em;
+        }
+
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .video-container video {
+            width: 420px;
+            height: 420px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .image-gallery img {
+            max-width: 100%;
+            width: 80%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .artistic-text {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .pipeline img {
+            width: 80%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .pipeline-description {
+            font-size: 1.3em;
+            text-align: justify;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section:nth-of-type(2n) {
+            background-color: #f0f0f0;
+        }
+
+        section:nth-of-type(2n+1) {
+            background-color: #fff;
+        }
+
+        section:first-of-type {
+            background-color: #f0f0f0;
+        }
+
+        .comparison-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .comparison-videos {
+            display: flex;
+            overflow: hidden;
+            width: 80%;
+            flex-direction: column;
+        }
+
+        .comparison-group {
+            display: flex;
+            flex-shrink: 0;
+            justify-content: space-between;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .comparison-group video {
+            width: 330px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .model-description {
+            text-align: center;
+            font-size: 1.1em;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .prompt-description {
+            text-align: center;
+            font-size: 1.1em;
+            margin-top: 20px;
+            font-style: italic;
+            color: #555;
+        }
+
+        .prev, .next {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 20px;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            font-size: 2em;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="artistic-title">Training-free High-quality Video Generation with Chain of Diffusion Model Experts</h1>
+        <a href="#" class="github-button" onclick="window.location.reload();">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub logo">
+            Code (coming soon)
+        </a>
+    </header>
+
+    <section>
+        <h2>Abstract</h2>
+        <div class="abstract">
+            <p>
+                Video generation models hold substantial potential in areas such as filmmaking. However, current video diffusion models need high computational costs and produce suboptimal results due to high complexity of video generation task. In this paper, we propose <strong>ConFiner</strong>, an efficient high-quality video generation framework that decouples video generation into easier subtasks: structure <strong>con</strong>trol and spatial-temporal re<strong>fine</strong>ment. It can generate high-quality videos with chain of off-the-shelf diffusion model experts, each expert responsible for a decoupled subtask. During the refinement, we introduce coordinated denoising, which can merge multiple diffusion experts' capabilities into a single sampling. Furthermore, we design ConFiner-Long framework, which can generate long coherent video with three constraint strategies on Confiner. Experimental results indicate that with only 10% of the inference cost, our ConFiner surpasses representative models like Lavie and Modelscope across all objective and subjective metrics. And ConFiner-Long can generate high-quality and coherent videos with up to 600 frames.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Pipeline</h2>
+        <div class="pipeline">
+            <img src="main_fig-3.pdf" alt="Pipeline">
+        </div>
+        <p class="pipeline-description">ConFiner decouples the video generation process. Firstly, control expert generates a video structure. Subsequently, temporal and spatial experts perform the refinement of spatio-temporal details. Spatial and temporal experts work together in refinement stage with our coordinated denoising. By adding consistency initialization, consistency guidance and staggered refinement to ConFiner, ConFiner-Long can generate coherent long videos.</p>
+    </section>
+
+    <section>
+        <h2>Example Videos</h2>
+        <div class="video-container">
+            <div>
+                <video controls>
+                    <source src="mecha.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="artistic-text">One mech on the Pacific Ocean.</p>
+            </div>
+            <div>
+                <video controls>
+                    <source src="clownfish.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="artistic-text">A clownfish swims among the colorful corals.</p>
+            </div>
+            <div>
+                <video controls>
+                    <source src="car.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="artistic-text">A sports car on the racetrack.</p>
+            </div>
+            <div>
+                <video controls>
+                    <source src="panda.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="artistic-text">A panda is playing a tambourine by the lake.</p>
+            </div>
+            <div>
+                <video controls>
+                    <source src="city.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="artistic-text">Flying cars go through a cyber city.</p>
+            </div>
+            <div>
+                <video controls>
+                    <source src="desert.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="artistic-text">Off-road vehicle driving off-road in the desert.</p>
+            </div>
+            <div>
+                <video controls>
+                    <source src="mountain.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="artistic-text">Overlooking the mountains.</p>
+            </div>
+            <div>
+                <video controls>
+                    <source src="wizard.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="artistic-text">The wizard is manipulating fire magic.</p>
+            </div>
+            <div>
+                <video controls>
+                    <source src="penguin.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="artistic-text">A group of penguins line up and march across the snowfield.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparisons with Previous Methods Section -->
+    <section>
+        <h2>Comparisons with Previous Methods</h2>
+        <div class="comparison-container">
+            <button class="prev" onclick="showPrev()">&#10094;</button>
+            <div class="comparison-videos" id="comparison-videos">
+                <!-- 第一个视频组 -->
+                <div class="comparison-group">
+                    <div>
+                        <video controls>
+                            <source src="car_straming.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p class="model-description">StreamingT2V</p>
+                    </div>
+                    <div>
+                        <video controls>
+                            <source src="car.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p class="model-description">ConFiner</p>
+                    </div>
+                    <div>
+                        <video controls>
+                            <source src="car_lavie.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p class="model-description">Lavie</p>
+                    </div>
+                </div>
+                <p class="prompt-description">Prompt: "A sports car on the racetrack."</p>
+                <!-- 第二个视频组 -->
+                <div class="comparison-group">
+                    <div>
+                        <video controls>
+                            <source src="panda_streaming.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p class="model-description">StreamingT2V</p>
+                    </div>
+                    <div>
+                        <video controls>
+                            <source src="panda.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p class="model-description">ConFiner</p>
+                    </div>
+                    <div>
+                        <video controls>
+                            <source src="panda_lavie.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p class="model-description">Lavie</p>
+                    </div>
+                </div>
+                <p class="prompt-description">Prompt: "A panda is playing a tambourine by the lake."</p>
+                <!-- 第三个视频组 -->
+                <div class="comparison-group">
+                    <div>
+                        <video controls>
+                            <source src="clownfish_streaming.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p class="model-description">StreamingT2V</p>
+                    </div>
+                    <div>
+                        <video controls>
+                            <source src="clownfish.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p class="model-description">ConFiner</p>
+                    </div>
+                    <div>
+                        <video controls>
+                            <source src="clownfish_lavie.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p class="model-description">Lavie</p>
+                    </div>
+                </div>
+                <p class="prompt-description">Prompt: "A clownfish swims among the colorful corals."</p>
+            </div>
+            <button class="next" onclick="showNext()">&#10095;</button>
+        </div>
+    </section>
+
+    <section>
+        <h2>Experimental Results</h2>
+        <div class="image-gallery">
+            <img src="experiments.jpg" alt="Objective Experimental Result">
+            <img src="table2.jpg" alt="Subjective Experimental Result">
+        </div>
+    </section>
+
+    <section>
+        <h2>Ablation Studies</h2>
+        <div class="image-gallery">
+            <img src="ablation.jpg" alt="Ablation Study on ConFiner-Long's Strategies">
+        </div>
+    </section>
+
+    <script>
+        let currentIndex = 0;
+        const groups = document.querySelectorAll('.comparison-group');
+        const prompts = document.querySelectorAll('.prompt-description');
+
+        function showGroup(index) {
+            groups.forEach((group, i) => {
+                group.style.display = i === index ? 'flex' : 'none';
+            });
+            prompts.forEach((prompt, i) => {
+                prompt.style.display = i === index ? 'block' : 'none';
+            });
+        }
+
+        function showPrev() {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : groups.length - 1;
+            showGroup(currentIndex);
+        }
+
+        function showNext() {
+            currentIndex = (currentIndex < groups.length - 1) ? currentIndex + 1 : 0;
+            showGroup(currentIndex);
+        }
+
+        // 初始化展示第一组视频和prompt
+        showGroup(currentIndex);
+    </script>
+</body>
+
+</html>
+如何在这个网页加入一个访问数量统计
