@@ -112,11 +112,12 @@
             margin-top: 10px;
         }
 
-        .pipeline img {
-            width: 80%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
+        .center-image {
+            display: block; /* 将图片设置为块级元素 */
+            margin-left: auto; /* 左外边距自动 */
+            margin-right: auto; /* 右外边距自动 */
+            width: 600px; /* 设置图片宽度 */
+            height: 400px; /* 设置图片高度 */
         }
 
         .pipeline-description {
@@ -248,7 +249,7 @@
     <section>
         <h2>Pipeline</h2>
         <div class="Overview Image">
-            <img src="./media/freeoutpainting/overview.png" alt="Overview Image" width="600" height="400">
+            <img src="./media/freeoutpainting/overview.png" alt="Overview Image" class="center-image">
         </div>
         <p class="Overview Image">The overview of our proposed Video Outpainting model. During training, only the Temporal Attention layer is trained, while the other layers are frozen. We explore four different conditional control training strategies: Frame-wise context, Frame-wise Adapter, Text and Free Condition.</p>
     </section>
