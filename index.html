@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Outpainting: Free Condition Video Outpainting with Diffusion Model</title>
+    <title>Do Less and Achieve More: Free Condition Video Outpainting with Diffusion Model
+</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -206,7 +207,8 @@
 
 <body>
     <header>
-        <h1 class="artistic-title">Free Outpainting: Free Condition Video Outpainting with Diffusion Model</h1>
+        <h1 class="artistic-title">Do Less and Achieve More: Free Condition Video Outpainting with Diffusion Model
+</h1>
         <a href="#" class="github-button" onclick="window.location.reload();">
             <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub logo">
             Paper
@@ -217,7 +219,7 @@
         <h2>Abstract</h2>
         <div class="abstract">
             <p>
-                Video generation models hold substantial potential in areas such as filmmaking. However, current video diffusion models need high computational costs and produce suboptimal results due to high complexity of video generation task. In this paper, we propose <strong>ConFiner</strong>, an efficient high-quality video generation framework that decouples video generation into easier subtasks: structure <strong>con</strong>trol and spatial-temporal re<strong>fine</strong>ment. It can generate high-quality videos with chain of off-the-shelf diffusion model experts, each expert responsible for a decoupled subtask. During the refinement, we introduce coordinated denoising, which can merge multiple diffusion experts' capabilities into a single sampling. Furthermore, we design ConFiner-Long framework, which can generate long coherent video with three constraint strategies on Confiner. Experimental results indicate that with only 10% of the inference cost, our ConFiner surpasses representative models like Lavie and Modelscope across all objective and subjective metrics. And ConFiner-Long can generate high-quality and coherent videos with up to 600 frames.
+                Video outpainting aims to extend the content of avideo beyond its original spatial boundaries. Existing methods tends to condition the generation process on a single frame or caption, failing to address the challenge in long videos with multiple video clips. To address this, we extend the diffusion-based image inpainting to a 3D diffusion model with a motion module for video outpainting. Then, we design four conditioning schemes to seek the appropriate condition strategy: Frame-wise context, Frame-wise Adapter, Text and Free Condition. Additionally, to enhance the continuity in long video genera- tion, we propose a noval Motion Momentum Update (MMU) method based on a training-free technique. Experimental results demonstrate that our proposed Free Condition strategy, termed Free-Outpainter, achieves state-of-the-art performance in video outpainting tasks. Ablation study also shows that the condition- free training paradigm is the most effective, avoiding inaccurate external information and fully utilizing inherent video data. Benefiting from the Free Condition strategy, our pipeline reduces the inference time to 5 seconds for 512x512x16 frames with only 10 GB of GPU memory.
             </p>
         </div>
     </section>
@@ -227,7 +229,7 @@
         <div class="pipeline">
             <img src="main_fig-3.pdf" alt="Pipeline">
         </div>
-        <p class="pipeline-description">ConFiner decouples the video generation process. Firstly, control expert generates a video structure. Subsequently, temporal and spatial experts perform the refinement of spatio-temporal details. Spatial and temporal experts work together in refinement stage with our coordinated denoising. By adding consistency initialization, consistency guidance and staggered refinement to ConFiner, ConFiner-Long can generate coherent long videos.</p>
+        <p class="pipeline-description">The overview of our proposed Video Outpainting model. During training, only the Temporal Attention layer is trained, while the other layers are frozen. We explore four different conditional control training strategies: Frame-wise context, Frame-wise Adapter, Text and Free Condition.</p>
     </section>
 
     <section>
@@ -238,63 +240,63 @@
                     <source src="./media/freeoutpainting/sample-1-bike-packing.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p class="artistic-text">One mech on the Pacific Ocean.</p>
+                
             </div>
             <div>
                 <video controls>
                     <source src="./media/freeoutpainting/sample-2-blackswan.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p class="artistic-text">A clownfish swims among the colorful corals.</p>
+                
             </div>
             <div>
                 <video controls>
                     <source src="./media/freeoutpainting/sample-7-breakdance-flare.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p class="artistic-text">A sports car on the racetrack.</p>
+                
             </div>
             <div>
                 <video controls>
                     <source src="./media/freeoutpainting/sample-11-car-roundabout.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p class="artistic-text">A panda is playing a tambourine by the lake.</p>
+                
             </div>
             <div>
                 <video controls>
                     <source src="./media/freeoutpainting/sample-19-dance-jump.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p class="artistic-text">Flying cars go through a cyber city.</p>
+               
             </div>
             <div>
                 <video controls>
                     <source src="./media/freeoutpainting/sample-25-dog.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p class="artistic-text">Off-road vehicle driving off-road in the desert.</p>
+                
             </div>
             <div>
                 <video controls>
                     <source src="./media/freeoutpainting/sample-28-drift-chicane.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p class="artistic-text">Overlooking the mountains.</p>
+                
             </div>
             <div>
                 <video controls>
                     <source src="./media/freeoutpainting/sample-32-elephant.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p class="artistic-text">The wizard is manipulating fire magic.</p>
+               
             </div>
             <div>
                 <video controls>
                     <source src="./media/freeoutpainting/sample-36-hike.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p class="artistic-text">A group of penguins line up and march across the snowfield.</p>
+                
             </div>
         </div>
     </section>
