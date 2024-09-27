@@ -202,6 +202,22 @@
         .next {
             right: 10px;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px; /* 设置字体大小为12px，类似于\scriptsize */
+        }
+        th, td {
+            border: 1px solid #000; /* 设置单元格边框 */
+            padding: 8px; /* 设置单元格内边距 */
+            text-align: center; /* 设置文本居中对齐 */
+        }
+        th {
+            background-color: #f2f2f2; /* 设置表头背景颜色 */
+        }
+        strong {
+            font-weight: bold; /* 设置加粗字体 */
+        }
     </style>
 </head>
 
@@ -389,17 +405,146 @@
 
     <section>
         <h2>Experimental Results</h2>
-        <div class="image-gallery">
-            <img src="experiments.jpg" alt="Objective Experimental Result">
-            <img src="table2.jpg" alt="Subjective Experimental Result">
-        </div>
+            <table>
+                <caption>Quantitative results on the DAVIS and YouTube-VOS datasets.</caption>
+                <thead>
+                    <tr>
+                        <th rowspan="2">Method</th>
+                        <th colspan="5">DAVIS Dataset <a href="#DAVIS">[DAVIS]</a></th>
+                        <th colspan="5">YouTube-VOS Dataset <a href="#VOS">[VOS]</a></th>
+                    </tr>
+                    <tr>
+                        <th>PSNR ↑</th>
+                        <th>SSIM ↑</th>
+                        <th>LPIPS ↓</th>
+                        <th>FVD ↓</th>
+                        <th>MSE ↓</th>
+                        <th>PSNR ↑</th>
+                        <th>SSIM ↑</th>
+                        <th>LPIPS ↓</th>
+                        <th>FVD ↓</th>
+                        <th>MSE ↓</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>VideoOutpainting <a href="#Dehan">[Dehan]</a></td>
+                        <td>17.96</td>
+                        <td>0.627</td>
+                        <td>0.2331</td>
+                        <td>363.1</td>
+                        <td>0.0260</td>
+                        <td>18.25</td>
+                        <td>0.7195</td>
+                        <td>0.2278</td>
+                        <td>149.7</td>
+                        <td>0.0231</td>
+                    </tr>
+                    <tr>
+                        <td>SDM <a href="#SDM">[SDM]</a></td>
+                        <td>20.02</td>
+                        <td>0.708</td>
+                        <td>0.2165</td>
+                        <td>334.6</td>
+                        <td>0.0153</td>
+                        <td>19.91</td>
+                        <td>0.7277</td>
+                        <td>0.2278</td>
+                        <td>94.81</td>
+                        <td>0.0169</td>
+                    </tr>
+                    <tr>
+                        <td>M3DDM <a href="#M3D">[M3D]</a></td>
+                        <td>20.26</td>
+                        <td>0.708</td>
+                        <td>0.2026</td>
+                        <td>300.0</td>
+                        <td>0.0149</td>
+                        <td>20.20</td>
+                        <td>0.7312</td>
+                        <td>0.2001</td>
+                        <td>66.62</td>
+                        <td>0.0164</td>
+                    </tr>
+                    <tr>
+                        <td>MOTIA <a href="#MOTIA">[MOTIA]</a></td>
+                        <td>20.36</td>
+                        <td>0.758</td>
+                        <td>0.1595</td>
+                        <td>286.3</td>
+                        <td>-</td>
+                        <td>20.25</td>
+                        <td>0.7636</td>
+                        <td>0.1854</td>
+                        <td>58.99</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Ours</td>
+                        <td><strong>20.87</strong></td>
+                        <td><strong>0.779</strong></td>
+                        <td><u>0.1895</u></td>
+                        <td><strong>282.4</strong></td>
+                        <td><strong>0.0141</strong></td>
+                        <td><strong>20.46</strong></td>
+                        <td><strong>0.7800</strong></td>
+                        <td><u>0.1955</u></td>
+                        <td><strong>35.64</strong></td>
+                        <td><strong>0.0162</strong></td>
+                    </tr>
+                </tbody>
+            </table>
     </section>
 
     <section>
         <h2>Ablation Studies</h2>
-        <div class="image-gallery">
-            <img src="ablation.jpg" alt="Ablation Study on ConFiner-Long's Strategies">
-        </div>
+            <table>
+                <caption>Ablaion study of different conditional control strategies.</caption>
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>PSNR ↑</th>
+                        <th>SSIM ↑</th>
+                        <th>LPIPS ↓</th>
+                        <th>FVD ↓</th>
+                        <th>MSE ↓</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Text</td>
+                        <td>19.98</td>
+                        <td>0.743</td>
+                        <td>0.2012</td>
+                        <td>321.5</td>
+                        <td>0.0160</td>
+                    </tr>
+                    <tr>
+                        <td>Frame-wise Context</td>
+                        <td>19.56</td>
+                        <td>0.769</td>
+                        <td>0.2087</td>
+                        <td>357.9</td>
+                        <td>0.0185</td>
+                    </tr>
+                    <tr>
+                        <td>Frame-wise Adapter</td>
+                        <td>19.88</td>
+                        <td>0.777</td>
+                        <td>0.2027</td>
+                        <td>337.0</td>
+                        <td>0.0181</td>
+                    </tr>
+                    <tr>
+                        <td>Free Condition</td>
+                        <td><strong>20.87</strong></td>
+                        <td><strong>0.779</strong></td>
+                        <td><strong>0.1895</strong></td>
+                        <td><strong>282.4</strong></td>
+                        <td><strong>0.0141</strong></td>
+                    </tr>
+                </tbody>
+            </table>
     </section>
 
     <script>
