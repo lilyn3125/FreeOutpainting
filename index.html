@@ -218,6 +218,11 @@
         strong {
             font-weight: bold; /* 设置加粗字体 */
         }
+        caption {
+            font-size: 14px; /* 设置标题字体大小为14px */
+            font-weight: bold; /* 设置标题字体加粗 */
+            margin-bottom: 10px; /* 设置标题与表格之间的距离 */
+        }
     </style>
 </head>
 
@@ -397,7 +402,6 @@
                         <p class="model-description">Lavie</p>
                     </div>
                 </div>
-                <p class="prompt-description">Prompt: "A clownfish swims among the colorful corals."</p>
             </div>
             <button class="next" onclick="showNext()">&#10095;</button>
         </div>
@@ -410,8 +414,8 @@
                 <thead>
                     <tr>
                         <th rowspan="2">Method</th>
-                        <th colspan="5">DAVIS Dataset <a href="#DAVIS">[DAVIS]</a></th>
-                        <th colspan="5">YouTube-VOS Dataset <a href="#VOS">[VOS]</a></th>
+                        <th colspan="5">DAVIS Dataset </th>
+                        <th colspan="5">YouTube-VOS Dataset </th>
                     </tr>
                     <tr>
                         <th>PSNR ↑</th>
@@ -428,7 +432,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>VideoOutpainting <a href="#Dehan">[Dehan]</a></td>
+                        <td>VideoOutpainting </td>
                         <td>17.96</td>
                         <td>0.627</td>
                         <td>0.2331</td>
@@ -494,10 +498,7 @@
                     </tr>
                 </tbody>
             </table>
-    </section>
-
-    <section>
-        <h2>Ablation Studies</h2>
+            <br>
             <table>
                 <caption>Ablaion study of different conditional control strategies.</caption>
                 <thead>
